@@ -1,0 +1,191 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>433 New Feature</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <meta name="theme-color" content="#fafafa">
+
+  <style>
+    #map {
+        height: 100vh;
+        width: 100%;
+        background-color: blanchedalmond;
+        margin: 0 auto;
+    }
+    #panel {
+      width: 100%;
+      position: fixed;
+      top: 10px;
+    }
+    #panel img.scoreboard {
+      width: 90%;
+      margin-left: 5%;
+    }
+    #panel img.buttons {
+      width: 70%;
+      margin-left: 15%;
+    }
+    @media (min-width: 800px) {
+      #panel {
+        max-width: 800px;
+      }      
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="map"></div>
+
+  <div id="panel">
+    <img class="scoreboard" src="img/scoreboard.png" alt="Scoreboard">
+    <img class="buttons" src="img/lineups.png" alt="Buttons">
+  </div>
+
+  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+  <script src="js/vendor/hw-hmscore-analytics-web-6.9.9-300.umd.js"></script>
+
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+  var agConnectConfig = 
+  {
+    "agcgw":{
+      "backurl":"connect-dre.hispace.hicloud.com",
+      "url":"connect-dre.dbankcloud.cn",
+      "websocketbackurl":"connect-ws-dre.hispace.dbankcloud.com",
+      "websocketurl":"connect-ws-dre.hispace.dbankcloud.cn"
+    },
+    "agcgw_all":{
+      "CN":"connect-drcn.dbankcloud.cn",
+      "CN_back":"connect-drcn.hispace.hicloud.com",
+      "DE":"connect-dre.dbankcloud.cn",
+      "DE_back":"connect-dre.hispace.hicloud.com",
+      "RU":"connect-drru.hispace.dbankcloud.ru",
+      "RU_back":"connect-drru.hispace.dbankcloud.cn",
+      "SG":"connect-dra.dbankcloud.cn",
+      "SG_back":"connect-dra.hispace.hicloud.com"
+    },
+    "websocketgw_all":{
+      "CN":"connect-ws-drcn.hispace.dbankcloud.cn",
+      "CN_back":"connect-ws-drcn.hispace.dbankcloud.com",
+      "DE":"connect-ws-dre.hispace.dbankcloud.cn",
+      "DE_back":"connect-ws-dre.hispace.dbankcloud.com",
+      "RU":"connect-ws-drru.hispace.dbankcloud.ru",
+      "RU_back":"connect-ws-drru.hispace.dbankcloud.cn",
+      "SG":"connect-ws-dra.hispace.dbankcloud.cn",
+      "SG_back":"connect-ws-dra.hispace.dbankcloud.com"
+    },
+    "client":{
+      "cp_id":"5190032000024811787",
+      "product_id":"388421841221449896",
+      "client_id":"1147804387372977792",
+      "client_secret":"7B7F6638CD0D2B938B0792D47FC6F2931E4ED1F4A8F48FDEF80D714D28C03F56",
+      "project_id":"388421841221449896",
+      "app_id":"172249065902461145",
+      "api_key":"DAEDAEpfANXnkKH7zNeay8jVlOM7maMKB8KvWehYeZDG1VsJcOKGa41JIJQoo82rucRFwN7U0+s8spdSl23o/kpZL1FoDMVOgS5Fzg=="
+    },
+    "oauth_client":{
+      "client_id":"108204501",
+      "client_type":7
+    },
+    "app_info":{
+      "app_id":"172249065902461145"
+    },
+    "service":{
+      "analytics":{
+        "collector_url":"datacollector-dre.dt.hicloud.com,datacollector-dre.dt.dbankcloud.cn",
+        "collector_url_ru":"datacollector-drru.dt.dbankcloud.ru,datacollector-drru.dt.hicloud.com",
+        "collector_url_sg":"datacollector-dra.dt.hicloud.com,datacollector-dra.dt.dbankcloud.cn",
+        "collector_url_de":"datacollector-dre.dt.hicloud.com,datacollector-dre.dt.dbankcloud.cn",
+        "collector_url_cn":"datacollector-drcn.dt.hicloud.com,datacollector-drcn.dt.dbankcloud.cn",
+        "resource_id":"p1",
+        "channel_id":""
+      },
+      "edukit":{
+        "edu_url":"edukit.edu.cloud.huawei.com.cn",
+        "dh_url":"edukit.edu.cloud.huawei.com.cn"
+      },
+      "search":{
+        "url":"https://search-dre.cloud.huawei.com"
+      },
+      "cloudstorage":{
+        "storage_url_sg_back":"https://agc-storage-dra.cloud.huawei.asia",
+        "storage_url_ru_back":"https://agc-storage-drru.cloud.huawei.ru",
+        "storage_url_ru":"https://agc-storage-drru.cloud.huawei.ru",
+        "storage_url_de_back":"https://agc-storage-dre.cloud.huawei.eu",
+        "storage_url_de":"https://ops-dre.agcstorage.link",
+        "storage_url":"https://agc-storage-drcn.platform.dbankcloud.cn",
+        "storage_url_sg":"https://ops-dra.agcstorage.link",
+        "storage_url_cn_back":"https://agc-storage-drcn.cloud.huawei.com.cn",
+        "storage_url_cn":"https://agc-storage-drcn.platform.dbankcloud.cn"
+      },
+      "ml":{
+        "mlservice_url":"ml-api-dre.ai.dbankcloud.com,ml-api-dre.ai.dbankcloud.cn"
+      }
+    },
+    "region":"DE",
+    "configuration_version":"3.0"
+  };
+  agconnect.instance().configInstance(agConnectConfig);
+  let analytics = agconnect.analytics();
+  </script>
+  <script>
+    function initMap() {
+        var mapOptions = {
+          center : {lat: 52.42901387049236, lng: 4.85427788955518},
+          zoom: 15,
+          language: 'en',
+          sourceType: 'vector',
+          scaleControl: true
+        };
+        var map = new HWMapJsSDK.HWMap(document.getElementById('map'), mapOptions);
+        mMarker = new HWMapJsSDK.HWMarker({
+          map: map,
+          position: {lat: 52.42901387049236, lng: 4.85427788955518},
+          zIndex: 10,
+          label: {
+              text: '433 Afterwork 7x7 Match',
+              offsetY: 10,
+              color: '#ffffff',
+              fontSize: '15px'
+          },
+          icon: {
+              url: 'img/futbol_marker_yellow.png',
+              opacity: 0.9,
+              scale: 0.9,
+          },
+          animation: 'DROP'
+        });
+        // Add a real-time traffic condition layer.
+        trafficMap = new HWMapJsSDK.HWTrafficLayer(map, {
+            // Set the update interval. The default value is 120 seconds.
+            interval: 40,
+            // Set whether to enable automatic update. The default value is false.
+            autoRefresh: true
+        });        
+        map.setPresetStyleId("night");
+        map.panTo({lat: 52.42901387049236, lng: 4.85427788955518});
+    }
+</script>  
+<script src="https://mapapi.cloud.huawei.com/mapjs/v1/api/js?callback=initMap&key=DAEDAEpfANXnkKH7zNeay8jVlOM7maMKB8KvWehYeZDG1VsJcOKGa41JIJQoo82rucRFwN7U0%2Bs8spdSl23o%2FkpZL1FoDMVOgS5Fzg%3D%3D"></script>  
+</body>
+
+</html>
